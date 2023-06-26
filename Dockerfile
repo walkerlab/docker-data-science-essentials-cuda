@@ -29,7 +29,9 @@ RUN apt-get update && \
 RUN pip3 install \
     numpy \
     scipy \ 
+    scikit-learn \
     pandas \
-    matplotlib
+    matplotlib \ 
+    seaborn
 
 WORKDIR /src
