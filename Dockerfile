@@ -22,6 +22,7 @@ RUN apt-get update && \
     curl \
     zip \
     unzip \
+    fish \
     python3-pip && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
@@ -31,6 +32,9 @@ RUN pip3 install \
     scikit-learn \
     pandas \
     matplotlib \ 
-    seaborn
-
+    seaborn \
+    jax \ 
+    numpyro \
+    pymc
+    
 WORKDIR /src
