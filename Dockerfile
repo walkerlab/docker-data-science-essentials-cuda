@@ -33,7 +33,7 @@ RUN pip3 install \
     pandas \
     matplotlib \ 
     seaborn \
-    jax \ 
+    jax[cuda12_local] \ 
     numpyro \
     pymc
     
