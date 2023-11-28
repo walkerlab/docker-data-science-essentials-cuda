@@ -26,14 +26,15 @@ RUN apt-get update && \
     python3-pip && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install \
+RUN JAX_CUDA_VER = ${CUDA_VER:0:2} | \
+    pip3 install \
     numpy \
     scipy \ 
     scikit-learn \
     pandas \
     matplotlib \ 
     seaborn \
-    jax[cuda12_local] \ 
+    jax[cuda$JAX_CUDA_VER_local] -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html \ 
     numpyro \
     pymc
     
