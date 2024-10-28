@@ -7,8 +7,8 @@ jobs:
   docker-build:
     strategy:
       matrix:
-        UBUNTU_VER: [20.04, 22.04]   
-        CUDA_VER: [11.8.0, 12.1.0]    
+        UBUNTU_VER: [22.04]   
+        CUDA_VER: [12.4.1]    
     runs-on: ubuntu-latest
     permissions:
       packages: write
