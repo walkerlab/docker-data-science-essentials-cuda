@@ -6,11 +6,12 @@ FROM nvidia/cuda:${CUDA_VER}-runtime-ubuntu${UBUNTU_VER}
 LABEL maintainer="Edgar Y. Walker <eywalker@uw.edu>, Daniel Sitonic <sitonic@uw.edu>"
 
 # Deal with pesky Python 3 encoding issue
-ENV LANG C.UTF-8
+ENV LANG=C.UTF-8
 
 # Prevent Debian/Ubuntu from asking questions
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
+RUN rm -rf /usr/share/dotnet && rm -rf "$AGENT_TOOLSDIRECTORY"
 # Install essential Ubuntu packages
 # and upgrade pip
 RUN apt-get update && \
