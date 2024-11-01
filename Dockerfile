@@ -26,10 +26,8 @@ RUN apt-get update && \
     python3-pip && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN rm -R /tmp
 
-RUN JAX_CUDA_VER = ${CUDA_VER:0:2} | \
-    pip3 install \
+RUN pip3 install \
     numpy \
     scipy \ 
     scikit-learn \
