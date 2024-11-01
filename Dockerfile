@@ -11,7 +11,6 @@ ENV LANG=C.UTF-8
 # Prevent Debian/Ubuntu from asking questions
 ENV DEBIAN_FRONTEND=noninteractive
 
-RUN rm -rf /usr/share/dotnet && rm -rf "$AGENT_TOOLSDIRECTORY"
 # Install essential Ubuntu packages
 # and upgrade pip
 RUN apt-get update && \
@@ -26,6 +25,8 @@ RUN apt-get update && \
     fish \
     python3-pip && \
     apt-get clean && rm -rf /var/lib/apt/lists/*
+
+RUN rm -R /tmp
 
 RUN JAX_CUDA_VER = ${CUDA_VER:0:2} | \
     pip3 install \
