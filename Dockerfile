@@ -24,7 +24,8 @@ RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
 ENV PATH="/root/.local/bin:$PATH"
 
-RUN uv venv /venv && \
+RUN uv tool install ruff@latest && \
+    uv venv /venv && \
     source /venv/bin/activate && \
     uv pip install numpy scipy scikit-learn pandas matplotlib seaborn numpyro pymc jax[cuda$JAX_CUDA_VER_local] -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html 
     
