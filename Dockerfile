@@ -1,6 +1,6 @@
 # Image Args
 ARG UBUNTU_VER=24.04
-ARG CUDA_VER=12.8.1
+ARG CUDA_VER=13.1.0
 FROM nvidia/cuda:${CUDA_VER}-runtime-ubuntu${UBUNTU_VER}
 LABEL maintainer="Edgar Y. Walker <eywalker@uw.edu>, Daniel Sitonic <sitonic@uw.edu>"
 
@@ -18,29 +18,22 @@ SHELL ["/bin/bash", "-c"]
 RUN apt-get update && \
     apt-get install -y build-essential && \
     apt-get install -y software-properties-common \
+    curl \
     git \
     wget \
     vim \
     curl \
     zip \
     unzip \
-    fish \
-    python3-pip && \
+    fish &&\
     apt-get clean && rm -rf /var/lib/apt/lists/*
 
-RUN apt-get update && apt-get install -y python3-venv
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
-RUN python3 -m venv /venv && \
+ENV PATH="/root/.local/bin:$PATH"
+
+RUN uv venv /venv && \
     source /venv/bin/activate && \
-    pip3 install \
-        numpy \
-        scipy \ 
-        scikit-learn \
-        pandas \
-        matplotlib \ 
-        seaborn \
-        numpyro \
-        pymc \
-        jax[cuda$JAX_CUDA_VER_local] -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html 
+    uv pip install numpy scipy scikit-learn pandas matplotlib seaborn numpyro pymc jax[cuda$JAX_CUDA_VER_local] -f https://storage.googleapis.com/jax-releases/jax_cuda_releases.html 
     
 WORKDIR /src
