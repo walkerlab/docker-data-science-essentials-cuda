@@ -47,6 +47,7 @@ jobs:
           sudo rm -rf /opt/ghc
           sudo rm -rf /opt/hostedtoolcache
           df -h
+          
       - name: Build
         uses: docker/build-push-action@v2
         with:
