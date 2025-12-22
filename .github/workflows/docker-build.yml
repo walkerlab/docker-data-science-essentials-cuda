@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         UBUNTU_VER: [24.04]   
-        CUDA_VER: [12.8.1]    
+        CUDA_VER: [13.1.0]    
     runs-on: ubuntu-latest
     permissions:
       packages: write
