@@ -16,17 +16,9 @@ SHELL ["/bin/bash", "-c"]
 # Install essential Ubuntu packages
 # and upgrade pip
 RUN apt-get update && \
-    apt-get install -y build-essential && \
-    apt-get install -y software-properties-common \
-    curl \
-    git \
-    wget \
-    vim \
-    curl \
-    zip \
-    unzip \
-    fish &&\
-    apt-get clean && rm -rf /var/lib/apt/lists/*
+    apt-get install -y build-essential software-properties-common curl git wget vim zip unzip fish && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
 RUN curl -LsSf https://astral.sh/uv/install.sh | sh
 
